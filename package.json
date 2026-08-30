@@ -1,0 +1,13 @@
+{
+  "name": "webcontentsview-resizable-preview",
+  "version": "1.0.0",
+  "description": "Small Electron demo: a resizable card whose WebContentsView preview tracks the card's bounds live.",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^33.0.0"
+  }
+}
