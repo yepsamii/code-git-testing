@@ -1,13 +1,25 @@
 {
   "name": "webcontentsview-resizable-preview",
   "version": "1.0.0",
-  "description": "Small Electron demo: a resizable card whose WebContentsView preview tracks the card's bounds live.",
-  "main": "src/main.js",
+  "description": "Small Electron + React demo: a resizable card whose WebContentsView preview tracks the card's bounds live.",
+  "main": "dist-electron/main/index.js",
   "private": true,
   "scripts": {
-    "start": "electron ."
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "electron": "^33.0.0"
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "electron": "^33.0.0",
+    "electron-vite": "^2.3.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
   }
 }
