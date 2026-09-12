@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: #1e1f22;
+  color: #e6e6e6;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+}
+
+.toolbar {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  background: #26282c;
+  border-bottom: 1px solid #34363a;
+}
+
+.toolbar-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #9aa0a6;
+  white-space: nowrap;
+}
+
+.url-form {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+}
+
+.url-form input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #3c3f44;
+  background: #1e1f22;
+  color: #e6e6e6;
+  font-size: 13px;
+  outline: none;
+}
+
+.url-form input:focus {
+  border-color: #6f9bff;
+}
+
+.url-form button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: #6f9bff;
+  color: #101114;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.url-form button:hover {
+  background: #86aaff;
+}
+
+.view-toggle {
+  background: #3c3f44 !important;
+  color: #e6e6e6 !important;
+}
+
+.view-toggle:hover {
+  background: #4a4d53 !important;
+}
+
+.stage {
+  position: relative;
+  height: calc(100% - 48px);
+  overflow: hidden;
+}
+
+.card {
+  position: absolute;
+  min-width: 220px;
+  min-height: 160px;
+  padding: 8px;
+  background: #2b2d31;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.card-viewport {
+  position: absolute;
+  inset: 8px;
+  background: #101114;
+  border-radius: 4px;
+}
+
+.card-full {
+  inset: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.card-full .card-viewport {
+  inset: 0;
+  border-radius: 0;
+}
+
+.handle {
+  position: absolute;
+  z-index: 2;
+}
+
+.handle-n, .handle-s {
+  left: 8px;
+  right: 8px;
+  height: 8px;
+  cursor: ns-resize;
+}
+.handle-e, .handle-w {
+  top: 8px;
+  bottom: 8px;
+  width: 8px;
+  cursor: ew-resize;
+}
+.handle-n { top: 0; }
+.handle-s { bottom: 0; }
+.handle-w { left: 0; }
+.handle-e { right: 0; }
+
+.handle-ne, .handle-nw, .handle-se, .handle-sw {
+  width: 12px;
+  height: 12px;
+}
+.handle-ne { top: 0; right: 0; cursor: nesw-resize; }
+.handle-nw { top: 0; left: 0; cursor: nwse-resize; }
+.handle-se { bottom: 0; right: 0; cursor: nwse-resize; }
+.handle-sw { bottom: 0; left: 0; cursor: nesw-resize; }
