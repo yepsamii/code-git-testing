@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Toolbar from './components/Toolbar'
 import ResizableCard from './components/ResizableCard'
+import { resolveAddress } from './lib/resolve-address'
 
 export default function App() {
   const [url, setUrl] = useState('')
@@ -10,9 +11,8 @@ export default function App() {
   }, [])
 
   const handleLoadUrl = (value: string) => {
-    let target = value.trim()
-    if (!target) return
-    if (!/^https?:\/\//i.test(target)) target = `https://${target}`
+    if (!value.trim()) return
+    const target = resolveAddress(value)
     window.previewAPI.loadURL(target)
     setUrl(target)
   }
