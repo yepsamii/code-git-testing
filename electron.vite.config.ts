@@ -20,6 +20,12 @@ export default defineConfig({
     },
   },
   renderer: {
+    root: '.',
+    build: {
+      rollupOptions: {
+        input: resolve(__dirname, 'index.html'),
+      },
+    },
     plugins: [react()],
   },
 })
