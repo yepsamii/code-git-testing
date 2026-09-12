@@ -67,6 +67,15 @@ body {
   background: #86aaff;
 }
 
+.view-toggle {
+  background: #3c3f44 !important;
+  color: #e6e6e6 !important;
+}
+
+.view-toggle:hover {
+  background: #4a4d53 !important;
+}
+
 .stage {
   position: relative;
   height: calc(100% - 48px);
@@ -88,6 +97,18 @@ body {
   inset: 8px;
   background: #101114;
   border-radius: 4px;
+}
+
+.card-full {
+  inset: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.card-full .card-viewport {
+  inset: 0;
+  border-radius: 0;
 }
 
 .handle {

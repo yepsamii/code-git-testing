@@ -17,7 +17,11 @@ interface DragState {
   startHeight: number
 }
 
-export default function ResizableCard() {
+interface ResizableCardProps {
+  fullWindow: boolean
+}
+
+export default function ResizableCard({ fullWindow }: ResizableCardProps) {
   const [rect, setRect] = useState({ left: 60, top: 60, width: 560, height: 380 })
   const cardRef = useRef<HTMLDivElement>(null)
   const viewportRef = useRef<HTMLDivElement>(null)
@@ -99,6 +103,7 @@ export default function ResizableCard() {
   }, [])
 
   const onHandleMouseDown = (dir: Dir) => (event: ReactMouseEvent) => {
+    if (fullWindow) return
     const card = cardRef.current
     if (!card) return
     const cardRect = card.getBoundingClientRect()
@@ -117,17 +122,18 @@ export default function ResizableCard() {
   return (
     <div
       ref={cardRef}
-      className="card"
-      style={{ left: rect.left, top: rect.top, width: rect.width, height: rect.height }}
+      className={fullWindow ? 'card card-full' : 'card'}
+      style={fullWindow ? undefined : { left: rect.left, top: rect.top, width: rect.width, height: rect.height }}
     >
       <div ref={viewportRef} className="card-viewport" />
-      {HANDLES.map((dir) => (
-        <div
-          key={dir}
-          className={`handle handle-${dir}`}
-          onMouseDown={onHandleMouseDown(dir)}
-        />
-      ))}
+      {!fullWindow &&
+        HANDLES.map((dir) => (
+          <div
+            key={dir}
+            className={`handle handle-${dir}`}
+            onMouseDown={onHandleMouseDown(dir)}
+          />
+        ))}
     </div>
   )
 }

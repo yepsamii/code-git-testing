@@ -3,8 +3,11 @@ import Toolbar from './components/Toolbar'
 import ResizableCard from './components/ResizableCard'
 import { resolveAddress } from './lib/resolve-address'
 
+export type ViewMode = 'card' | 'full'
+
 export default function App() {
   const [url, setUrl] = useState('')
+  const [viewMode, setViewMode] = useState<ViewMode>('card')
 
   useEffect(() => {
     window.previewAPI.getURL().then(setUrl)
@@ -17,11 +20,21 @@ export default function App() {
     setUrl(target)
   }
 
+  const toggleViewMode = () => {
+    setViewMode((mode) => (mode === 'card' ? 'full' : 'card'))
+  }
+
   return (
     <>
-      <Toolbar url={url} onUrlChange={setUrl} onSubmit={handleLoadUrl} />
+      <Toolbar
+        url={url}
+        viewMode={viewMode}
+        onUrlChange={setUrl}
+        onSubmit={handleLoadUrl}
+        onToggleViewMode={toggleViewMode}
+      />
       <main className="stage">
-        <ResizableCard />
+        <ResizableCard fullWindow={viewMode === 'full'} />
       </main>
     </>
   )
